@@ -1,6 +1,10 @@
+import 'package:certificat_management/bindings/certificat_binding.dart';
 import 'package:certificat_management/bindings/maison_binding.dart';
+import 'package:certificat_management/bindings/personne_binding.dart';
 import 'package:certificat_management/bindings/quartier_binding.dart';
+import 'package:certificat_management/pages/certificat/list_page.dart';
 import 'package:certificat_management/pages/maison/list_page.dart';
+import 'package:certificat_management/pages/personne/personne_list_page.dart';
 import 'package:certificat_management/pages/quartier/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,19 +51,30 @@ class HomePage extends StatelessWidget {
             _buildFeatureCard(
               icon: Icons.person,
               title: 'Propriétaires',
-              onTap: () => Get.toNamed('/proprietaires'),
+              // onTap: () => Get.toNamed('/proprietaires'),
+              onTap: () => Get.to(() => PersonneListPage(), binding: PersonneBinding()),
+
+                  // C'EST JUSTE UNE AURE MANIERE DE FAIRE
+                    //               GetPage(
+                    //   name: '/personnes',
+                    //   page: () => PersonneListPage(),
+                    //   binding: PersonneBinding(),
+                    // ),
               color: Colors.purple,
             ),
-            _buildFeatureCard(
-              icon: Icons.people,
-              title: 'Habitants',
-              onTap: () => Get.toNamed('/habitants'),
-              color: Colors.blue,
-            ),
+            // _buildFeatureCard(
+            //   icon: Icons.people,
+            //   title: 'Habitants',
+            //   onTap: () => Get.toNamed('/habitants'),
+            //   color: Colors.blue,
+            // ),
             _buildFeatureCard(
               icon: Icons.description,
               title: 'Certificats',
-              onTap: () => Get.toNamed('/certificats'),
+              // onTap: () => Get.toNamed('/certificats'),
+
+              onTap: () => Get.to(() => CertificatListPage(), binding: CertificatBinding()),
+
               color: Colors.green,
             ),
           ],

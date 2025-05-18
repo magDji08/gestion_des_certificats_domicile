@@ -1,10 +1,13 @@
+import 'package:certificat_management/controllers/auth_controller.dart';
+import 'package:certificat_management/controllers/certificat_controller.dart';
+import 'package:certificat_management/controllers/personne_controlller.dart';
 import 'package:certificat_management/service/database_service.dart';
 import 'package:get/get.dart';
 import '../controllers/quartier_controller.dart';
 import '../controllers/maison_controller.dart';
-import '../controllers/proprietaire_controller.dart';
-import '../controllers/habitant_controller.dart';
-import '../controllers/certificat_controller.dart';
+// import '../controllers/proprietaire_controller.dart';
+// import '../controllers/habitant_controller.dart';
+// import '../controllers/certificat_controller.dart';
 // import '../services/database_service.dart';
 
 class AppBinding implements Bindings {
@@ -16,9 +19,10 @@ class AppBinding implements Bindings {
     // Initialisation des contrôleurs
     _initQuartierController();
     _initMaisonController();
-    // _initProprietaireController();
+    _initPersonneController();
     // _initHabitantController();
-    // _initCertificatController();
+    _initCertificatController();
+    _initAuthController();
   }
 
   // Méthodes d'initialisation séparées pour plus de clarté
@@ -39,9 +43,13 @@ class AppBinding implements Bindings {
     );
   }
 
+  void _initAuthController() {
+    Get.lazyPut<AuthController>(
+      () => AuthController(),
+      fenix: true,
+    );
+  }
 
-
-  
 
   void _initMaisonController() {
     Get.lazyPut<MaisonController>(
@@ -50,12 +58,12 @@ class AppBinding implements Bindings {
     );
   }
 
-  // void _initProprietaireController() {
-  //   Get.lazyPut<ProprietaireController>(
-  //     () => ProprietaireController(),
-  //     fenix: true,
-  //   );
-  // }
+  void _initPersonneController() {
+    Get.lazyPut<PersonneController>(
+      () => PersonneController(),
+      fenix: true,
+    );
+  }
 
   // void _initHabitantController() {
   //   Get.lazyPut<HabitantController>(
@@ -64,10 +72,10 @@ class AppBinding implements Bindings {
   //   );
   // }
 
-  // void _initCertificatController() {
-  //   Get.lazyPut<CertificatController>(
-  //     () => CertificatController(),
-  //     fenix: true,
-  //   );
-  // }
+  void _initCertificatController() {
+    Get.lazyPut<CertificatController>(
+      () => CertificatController(),
+      fenix: true,
+    );
+  }
 }
