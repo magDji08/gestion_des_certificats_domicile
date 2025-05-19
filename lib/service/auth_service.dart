@@ -5,10 +5,11 @@ import 'package:certificat_management/service/database_service.dart';
 class AuthService {
   final DatabaseService _dbService = Get.find();
 
+  /// Connexion utilisateur à partir de la table 'utilisateurs'
   Future<User?> login(String email, String password) async {
     final db = await _dbService.database;
     final users = await db.query(
-      'users',
+      'utilisateurs',
       where: 'email = ? AND password = ?',
       whereArgs: [email, password],
     );
@@ -17,8 +18,9 @@ class AuthService {
     return User.fromMap(users.first);
   }
 
+  /// Enregistrement d'un nouvel utilisateur dans la table 'utilisateurs'
   Future<void> register(User user) async {
     final db = await _dbService.database;
-    await db.insert('users', user.toMap());
+    await db.insert('utilisateurs', user.toMap());
   }
 }

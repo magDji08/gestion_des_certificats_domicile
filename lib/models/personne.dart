@@ -1,8 +1,10 @@
 class Personne {
   final int? id;
   final String nom;
+  final String prenom;
   final String telephone;
-  final String email;
+  final String dateNaissance;
+  final String lieuNaissance;
   final String role; // "proprietaire" ou "habitant"
   final int maisonId;
   final DateTime createdAt;
@@ -11,8 +13,10 @@ class Personne {
   Personne({
     this.id,
     required this.nom,
+    required this.prenom,
     required this.telephone,
-    required this.email,
+    required this.dateNaissance,
+    required this.lieuNaissance,
     required this.role,
     required this.maisonId,
     DateTime? createdAt,
@@ -24,8 +28,10 @@ class Personne {
     return Personne(
       id: map['id'],
       nom: map['nom'] ?? '',
+      prenom: map['prenom'] ?? '',
       telephone: map['telephone'] ?? '',
-      email: map['email'] ?? '',
+      dateNaissance: map['date_naissance'] ?? '',
+      lieuNaissance: map['lieu_naissance'] ?? '',
       role: map['role'] ?? '',
       maisonId: map['maison_id'] ?? 0,
       createdAt: DateTime.parse(map['created_at'] ?? DateTime.now().toIso8601String()),
@@ -37,8 +43,10 @@ class Personne {
     return {
       'id': id,
       'nom': nom,
+      'prenom': prenom,
       'telephone': telephone,
-      'email': email,
+      'date_naissance': dateNaissance,
+      'lieu_naissance': lieuNaissance,
       'role': role,
       'maison_id': maisonId,
       'created_at': createdAt.toIso8601String(),
@@ -49,8 +57,10 @@ class Personne {
   Personne copyWith({
     int? id,
     String? nom,
+    String? prenom,
     String? telephone,
-    String? email,
+    String? dateNaissance,
+    String? lieuNaissance,
     String? role,
     int? maisonId,
     DateTime? createdAt,
@@ -59,8 +69,10 @@ class Personne {
     return Personne(
       id: id ?? this.id,
       nom: nom ?? this.nom,
+      prenom: prenom ?? this.prenom,
       telephone: telephone ?? this.telephone,
-      email: email ?? this.email,
+      dateNaissance: dateNaissance ?? this.dateNaissance,
+      lieuNaissance: lieuNaissance ?? this.lieuNaissance,
       role: role ?? this.role,
       maisonId: maisonId ?? this.maisonId,
       createdAt: createdAt ?? this.createdAt,
